@@ -14,22 +14,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.myapplication.navigation.AUTH_ROUTE
 import com.example.myapplication.navigation.Screen
 
+
 @Composable
-fun HomeScreen(
+fun SignUpScreen(
     navController: NavController
 ) {
-
-
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Home",
+            text = "SignUp",
             color = MaterialTheme.colors.primary,
             fontSize = 24.sp,
             fontWeight = FontWeight.Medium,
@@ -38,25 +36,14 @@ fun HomeScreen(
 
                 }
         )
-        Text(
-            text = "go to login",
-            color = MaterialTheme.colors.error,
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Medium,
-            modifier = Modifier
-                .padding(24.dp)
-                .clickable {
-                    navController.navigate(AUTH_ROUTE)
-                }
-        )
     }
 }
 
 
 @Composable
 @Preview(showBackground = true)
-fun HomeScreenPrev() {
-    HomeScreen(
+fun SignUpScreenPrev() {
+    SignUpScreen(
         navController = rememberNavController()
     )
 }

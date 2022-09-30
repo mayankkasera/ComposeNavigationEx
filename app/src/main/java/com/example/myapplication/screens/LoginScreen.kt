@@ -14,14 +14,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.myapplication.navigation.AUTH_ROUTE
+import com.example.myapplication.navigation.HOME_ROUTE
 import com.example.myapplication.navigation.Screen
 
+
 @Composable
-fun HomeScreen(
+fun LoginScreen(
     navController: NavController
 ) {
-
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -29,34 +29,53 @@ fun HomeScreen(
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Home",
+            text = "Login",
             color = MaterialTheme.colors.primary,
             fontSize = 24.sp,
             fontWeight = FontWeight.Medium,
             modifier = Modifier
                 .clickable {
-
+                    navController.navigate(Screen.SignUpScreen.route)
                 }
         )
         Text(
-            text = "go to login",
+            text = "go back",
             color = MaterialTheme.colors.error,
             fontSize = 16.sp,
             fontWeight = FontWeight.Medium,
             modifier = Modifier
                 .padding(24.dp)
                 .clickable {
-                    navController.navigate(AUTH_ROUTE)
+                    navController.navigate(HOME_ROUTE){
+                        popUpTo(HOME_ROUTE){
+                           inclusive = true
+                        }
+                    }
+                }
+        )
+
+        Text(
+            text = "go to detail",
+            color = MaterialTheme.colors.error,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Medium,
+            modifier = Modifier
+                .padding(24.dp)
+                .clickable {
+                    navController.popBackStack()
+                    navController.navigate(Screen.DetailScreen.setArgs(2,"dcds"))
                 }
         )
     }
+
+
 }
 
 
 @Composable
 @Preview(showBackground = true)
-fun HomeScreenPrev() {
-    HomeScreen(
+fun LoginScreenPrev() {
+    LoginScreen(
         navController = rememberNavController()
     )
 }

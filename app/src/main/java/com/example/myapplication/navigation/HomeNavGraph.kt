@@ -1,23 +1,19 @@
 package com.example.myapplication.navigation
 
 import android.util.Log
-import androidx.compose.runtime.Composable
-import androidx.navigation.NavArgument
-import androidx.navigation.NavHostController
-import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
+import androidx.navigation.*
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
 import com.example.myapplication.screens.DetailScreen
 import com.example.myapplication.screens.HomeScreen
+import com.example.myapplication.screens.LoginScreen
+import com.example.myapplication.screens.SignUpScreen
 
 private const val TAG = "NavGraph123"
-
-@Composable
-fun SetUpNavGraph(
-    navController: NavHostController
-) {
-    NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
+fun NavGraphBuilder.homeNavGraph(navController: NavHostController){
+    navigation(
+        startDestination = Screen.HomeScreen.route,
+        route = HOME_ROUTE
+    ){
         composable(
             route = Screen.HomeScreen.route
         ) {
